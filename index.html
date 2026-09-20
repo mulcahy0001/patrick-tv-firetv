@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07101f">
+  <title>Patrick TV</title>
+  <meta name="description" content="One personal guide for live local TV and your streaming services.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%2307101f'/%3E%3Cpath d='M13 18h38v27H13z' fill='none' stroke='%235ce1e6' stroke-width='5'/%3E%3Cpath d='m25 28 16 8-16 8z' fill='%23ffcd57'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Patrick TV home">
+        <span class="brand-mark">P</span><span>PATRICK <b>TV</b></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <button class="nav-item active" data-section="LIVE">LIVE</button>
+        <button class="nav-item" data-section="GUIDE">GUIDE</button>
+        <button class="nav-item" data-section="SPORTS">SPORTS</button>
+        <button class="nav-item" data-section="MOVIES">MOVIES</button>
+        <button class="nav-item" data-section="SHOWS">SHOWS</button>
+        <button class="nav-item" data-section="MUSIC">MUSIC</button>
+        <button class="nav-item" data-section="FAVORITES">FAVORITES</button>
+      </nav>
+      <div class="clock" id="clock" aria-label="Current time"></div>
+      <div class="device-badge" id="deviceBadge" hidden>FIRE TV TEST</div>
+    </header>
+
+    <main>
+      <section class="player-panel" id="playerPanel" aria-label="Now playing">
+        <div class="video-stage" id="videoStage">
+          <div class="aurora a1"></div><div class="aurora a2"></div>
+          <div class="station-bug" id="stationBug">7.1<br><span>KXAN</span></div>
+          <div class="play-glyph">▶</div>
+          <div class="native-badge" id="nativeBadge">LIVE · OTA</div>
+        </div>
+        <div class="program-info">
+          <div>
+            <div class="eyebrow"><span id="channelLabel">7.1 KXAN</span><span class="dot"></span><span id="sourceLabel">Antenna</span></div>
+            <h1 id="programTitle">Today in Austin</h1>
+            <p id="programMeta">9:00 AM–11:00 AM · News · Live</p>
+            <p id="programDescription">Local headlines, weather and the stories shaping Central Texas this morning.</p>
+          </div>
+          <div class="info-actions">
+            <button class="round-action" id="favoriteBtn" aria-label="Add current channel to favorites" title="Favorite">☆</button>
+            <button class="watch-button" id="watchBtn">WATCH LIVE</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="guide-panel" aria-label="Channel guide">
+        <div class="guide-toolbar">
+          <div class="view-switch" role="group" aria-label="Guide layout">
+            <button class="view-btn active" data-view="live">LIVE GUIDE</button>
+            <button class="view-btn" data-view="full">FULL GUIDE</button>
+          </div>
+          <div class="filter-row" id="filterRow" role="group" aria-label="Filter channels">
+            <button class="filter active" data-filter="ALL">All</button>
+            <button class="filter" data-filter="OTA">Antenna</button>
+            <button class="filter" data-filter="FAST">Free streaming</button>
+            <button class="filter" data-filter="SUBSCRIPTION">Subscriptions</button>
+          </div>
+          <div class="legend"><span><i class="key native"></i> Plays here</span><span><i class="key handoff"></i> Opens provider</span></div>
+        </div>
+
+        <div class="guide-scroll" id="guideScroll" tabindex="0" aria-label="Use arrow keys to move through channels and programs">
+          <div class="guide-grid" id="guideGrid"></div>
+        </div>
+        <div class="guide-help" id="guideHelp">↑ ↓ channels&nbsp;&nbsp; ← → programs&nbsp;&nbsp; SELECT to tune&nbsp;&nbsp; F favorite&nbsp;&nbsp; G change view</div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal" hidden>
+    <section class="handoff-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <div class="provider-logo" id="providerLogo">tv+</div>
+      <p class="eyebrow" id="modalEyebrow">APPLE TV+</p>
+      <h2 id="modalTitle">Open Slow Horses?</h2>
+      <p id="modalCopy">Playback is controlled by Apple TV. Patrick TV will take you there and remember your place in the guide.</p>
+      <button class="watch-button wide" id="launchBtn">OPEN APP</button>
+      <button class="text-button" id="cancelBtn">STAY IN GUIDE</button>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
